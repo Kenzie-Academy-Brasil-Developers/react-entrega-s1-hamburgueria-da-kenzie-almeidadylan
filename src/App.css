@@ -1,0 +1,173 @@
+
+.App {
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+ul{
+  display: flex;
+  overflow-x: scroll;
+  list-style: none;
+}
+li{
+  min-width: 300px;
+  display: flex;
+  margin: 10px 0;
+  border: #E0E0E0 2px solid;
+  border-radius: 5px;
+}
+img{
+  margin: 0 auto;
+}
+.Coca-Cola{
+  object-fit: cover;
+}
+.Fanta.Guaraná{
+  clip-path: inset(30px 0 0 0);
+  object-fit: cover;
+}
+.img-product-cardapio{
+  background-color: #f2f2f2;
+  display: flex;
+  justify-content: center;
+  height: 150px;
+}
+.produto{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  text-align: left;
+}
+h2{
+  font-weight: 700;
+  font-size: 18px;
+  color: #333;
+  margin: 25px 0;
+}
+h5{
+  font-weight: 400;
+  font-size: 12px;
+  color: #828282;
+  font-style: normal;
+  margin: 0;
+}
+h6{
+  color: #27AE60;
+  margin: 25px 0;
+}
+
+.logo-burguer-kenzie{
+  width: 150px;
+  height: 22.85px;
+  margin: 15px 0;
+}
+.btn-pesquisar{
+  margin-left: -120px;
+  color: #fff;
+  background-color: #27AE60;
+  border-radius: 8px;
+  border: #27AE60 solid 2px;
+  padding: 11.5px 20px;
+  font-weight: 500;
+}
+.barra-de-busca{
+  height: 44px;
+  width: 382px;
+}
+.btn-adicionar-carrinho{
+  background-color: #27AE60;
+  color: #fff;
+  border-radius: 8px;
+  border: none;
+  padding: 11.5px 20px;
+  width: 106px;
+  height: 40px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  height: 130px;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media screen and (min-width:800px){
+  body{
+    overflow-x: hidden;
+  }
+  ul{
+    overflow:hidden;
+    overflow-x: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    justify-content: space-around;
+  }
+  .App-header {
+    background-color: #f5f5f5;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+    height: 80px;
+  }
+  .logo-burguer-kenzie{
+    margin-left: 70px; ;
+  }
+  .barra-de-busca{
+    margin-right: 70px;
+  }
+  .btn-pesquisar{
+    margin-left: -180px;
+    margin-right: 70px;
+  }
+  .card-carrinho-de-compras{
+    display: flex;
+    flex-direction: column;
+    height: 250px;
+    background-color: #f2f2f2;
+  }
+  .corpo-do-site{
+    display: flex;
+    flex-direction: row;
+  }
+  .carrinho-de-compras{
+    width: 365px;
+    background-color: #27AE60;
+    height: 65px;
+    color: #fff;
+    border-radius: 4px 4px 0 0px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
