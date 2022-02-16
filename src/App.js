@@ -4,68 +4,73 @@ import Logohamburgueria from "./components/logo/logo";
 import Inputsearch from "./components/inputSearch/inputSearch";
 import Productslist from "./components/ProductsList/ProductList";
 import Cart from "./components/Cart/cart";
-//import Cartproduct from "./components/CartProduct/CartProduct";
 
 function App() {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [currentSale, setCurrentSale] = useState([]);
   const [cartTotal, setCartTotal] = useState(0);
-  const [contador, setContador] = useState(1);
-
-  /*function showProducts(){}
-  function handleClick({id}){
-    //Element.find()
-  }*/
 
   useEffect(() => {
     fetch("https://hamburgueria-kenzie-json-serve.herokuapp.com/products")
       .then((response) => response.json())
       .then((Element) => {
-        //console.log(Element)
         setProducts(Element);
       });
   }, []);
 
-  function remove(id) {
+  function filtro(str) {
+    const filtragem = products.filter((item) => {
+      return item.name.toLowerCase().includes(str.toLowerCase());
+    });
+    setFilteredProducts(filtragem);
+  }
+
+  function handleClick(id) {
     console.log(id);
     const newProductList = currentSale.filter((item) => {
       return item.id !== id;
     });
-  //  setCurrentSale(newProductList)
-    console.log(newProductList)
+    setCurrentSale(newProductList);
   }
 
-  function add(id) {
+  function showProducts(id) {
     const found = products.find((item) => {
       return item.id === id;
     });
-    setCurrentSale([...currentSale, found])
-    console.log(currentSale)
-    
+    for (let i = 0; i < currentSale.length; i++) {
+      if (currentSale[i] === found) {
+        return;
+      }
+    }
+    setCurrentSale([...currentSale, found]);
   }
-  //const produtosFiltrados = products.name.toLowerCase().filter((produto) => produto.name.toLowerCase().includes(filteredProducts))
-  //console.log(produtosFiltrados)
+
+  function precoTotal() {
+    const total = currentSale.reduce((acu, valor) => (acu += valor.price), 0);
+    setCartTotal(total);
+  }
+
   return (
     <section className="App">
       <header className="App-header">
         <Logohamburgueria />
-        <Inputsearch
-          filteredProducts={filteredProducts}
-          setFilteredProducts={setFilteredProducts}
-        />
+        <Inputsearch funcao={filtro} />
       </header>
       <div className="corpo-do-site">
         <div>
-          <Productslist lista={products}  funcao={add}/>
+          <Productslist
+            lista={filteredProducts.length > 0 ? filteredProducts : products}
+            funcao={showProducts}
+          />
         </div>
-        <div>
+        <div className="parte-do-carrinho">
           <Cart
             lista={currentSale}
-            contador={contador}
-            setContador={setContador}
+            funcao={handleClick}
+            setCurrentSale={setCurrentSale}
+            currentSale={currentSale}
           />
-          <button onClick={add}>aperte</button>
         </div>
       </div>
     </section>

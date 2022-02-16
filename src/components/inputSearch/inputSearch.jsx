@@ -1,16 +1,21 @@
+import { useState } from "react";
 
-function InputSearch({filteredProducts, setFilteredProducts ,funcao}){
-    return (
-    <form className='campo-de-busca'>
-        <input 
-            value={filteredProducts}
-            onChange={(event) => {setFilteredProducts(event.target.value)}} 
-            type='text' 
-            className="barra-de-busca"
-        />
-        <button  className="btn-pesquisar">Pesquisar</button>
-    </form>
-)
+function InputSearch({ funcao }) {
+  const [valueInput, setValueInput] = useState("");
+  return (
+    <div className="campo-de-busca">
+      <input
+        onChange={(event) => {
+          funcao(event.target.value);
+        }}
+        type="text"
+        className="barra-de-busca"
+      />
+      <button onClick={() => funcao(valueInput)} className="btn-pesquisar">
+        Pesquisar
+      </button>
+    </div>
+  );
 }
 
-export default InputSearch
+export default InputSearch;
