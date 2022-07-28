@@ -2,6 +2,8 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+para ver o projeto funcionando acesse o link: https://react-entrega-s1-hamburgueria-da-kenzie-almeidadylan-nxu3szp05.vercel.app/
+
 ## Available Scripts
 
 In the project directory, you can run:
